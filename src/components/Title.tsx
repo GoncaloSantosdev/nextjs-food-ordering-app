@@ -10,7 +10,11 @@ const Title = ({ title, subtitle, center }: TitleProps) => {
       <h6 className="text-red-500 tracking-wider uppercase font-semibold text-lg">
         {subtitle}
       </h6>
-      <h3 className="text-4xl font-bold mt-4 md:w-[40%] mx-auto leading-normal">
+      <h3
+        className={`text-4xl font-bold mt-4 md:w-[60%] lg:w-[40%] ${
+          center ? "mx-auto" : ""
+        } leading-normal`}
+      >
         {title}
       </h3>
     </div>

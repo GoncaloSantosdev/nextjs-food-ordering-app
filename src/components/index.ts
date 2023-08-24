@@ -4,4 +4,8 @@ export { default as Hero } from "./Hero";
 export { default as ImageSwiper } from "./ImageSwiper";
 export { default as Features } from "./Features";
 export { default as Title } from "./Title";
+export { default as FeaturedProducts } from "./FeaturedProducts";
+export { default as ProductCard } from "./ProductCard";
+export { default as Banner } from "./Banner";
+export { default as Timer } from "./Timer";
 export { default as Footer } from "./Footer";
