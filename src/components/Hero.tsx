@@ -2,7 +2,7 @@ import { ImageSwiper } from ".";
 
 const Hero = () => {
   return (
-    <div className="mt-20 flex flex-col lg:flex-row lg:items-center">
+    <section className="mt-20 flex flex-col lg:flex-row lg:items-center">
       {/* content */}
       <div className="">
         <span className="bg-red-500 text-white px-4 py-3 rounded">
@@ -25,7 +25,7 @@ const Hero = () => {
       </div>
       {/* Swiper */}
       <ImageSwiper />
-    </div>
+    </section>
   );
 };
 

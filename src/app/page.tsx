@@ -1,13 +1,14 @@
 // Components
-import { Hero } from "@/components";
+import { Features, Hero } from "@/components";
 
 const HomePage = () => {
   return (
-    <section>
+    <div>
       <div className="container mx-auto px-4 md:px-0">
         <Hero />
+        <Features />
       </div>
-    </section>
+    </div>
   );
 };
 

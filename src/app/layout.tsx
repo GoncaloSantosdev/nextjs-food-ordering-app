@@ -22,7 +22,7 @@ export default function RootLayout({
         <Notification />
         <Header />
         <main>{children}</main>
-        {/* <Footer /> */}
+        <Footer />
       </body>
     </html>
   );
