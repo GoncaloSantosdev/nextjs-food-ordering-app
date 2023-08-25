@@ -22,7 +22,6 @@ export default function RootLayout({
         <Notification />
         <Header />
         {children}
-        <Banner />
         <Footer />
       </body>
     </html>

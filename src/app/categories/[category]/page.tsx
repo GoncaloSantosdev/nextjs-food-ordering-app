@@ -1,5 +1,5 @@
 // Components
-import { ProductCard, Title } from "@/components";
+import { Banner, ProductCard, Title } from "@/components";
 // Data
 import { pizzas } from "@/data";
 
@@ -23,6 +23,8 @@ const CategoryPage = () => {
           </div>
         </div>
       </section>
+
+      <Banner />
     </main>
   );
 };

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 // Data
 import { categories } from "@/data";
+import { Banner } from "@/components";
 
 const CategoriesPage = () => {
   return (
@@ -34,6 +35,8 @@ const CategoriesPage = () => {
           ))}
         </div>
       </section>
+
+      <Banner />
     </main>
   );
 };

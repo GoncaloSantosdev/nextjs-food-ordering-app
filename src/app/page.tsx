@@ -99,6 +99,8 @@ const HomePage = () => {
           </div>
         </div>
       </section>
+
+      <Banner />
     </main>
   );
 };

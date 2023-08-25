@@ -1,7 +1,7 @@
 import Image from "next/image";
 // Data
 import { singleProduct } from "@/data";
-import { Options } from "@/components";
+import { Banner, Options } from "@/components";
 
 const SingleProductPage = () => {
   return (
@@ -23,6 +23,8 @@ const SingleProductPage = () => {
           <Options singleProduct={singleProduct} />
         </div>
       </section>
+
+      <Banner />
     </main>
   );
 };
