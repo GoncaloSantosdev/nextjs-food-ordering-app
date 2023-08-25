@@ -1,5 +1,12 @@
+import { Banner, Categories, FeaturedProducts } from "@/components";
+
 const MenuPage = () => {
-  return <div>MenuPage</div>;
+  return (
+    <div>
+      <Categories />
+      <Banner />
+    </div>
+  );
 };
 
 export default MenuPage;

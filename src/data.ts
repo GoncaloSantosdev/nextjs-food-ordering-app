@@ -352,7 +352,7 @@ export const singleProduct: Product = {
   ],
 };
 
-type Menu = {
+type Categories = {
   id: number;
   slug: string;
   title: string;
@@ -361,13 +361,13 @@ type Menu = {
   color: string;
 }[];
 
-export const menu: Menu = [
+export const categories: Categories = [
   {
     id: 1,
     slug: "pastas",
     title: "Italian Pastas",
     desc: "Savor the taste of perfection with our exquisite Italian handmade pasta menu.",
-    img: "/temporary/m1.png",
+    img: "https://images.unsplash.com/photo-1616299915952-04c803388e5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2862&q=80",
     color: "white",
   },
   {
@@ -375,7 +375,7 @@ export const menu: Menu = [
     slug: "burgers",
     title: "Juicy Burgers",
     desc: "Burger Bliss: Juicy patties, bold flavors, and gourmet toppings galore.",
-    img: "/temporary/m2.png",
+    img: "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2942&q=80",
     color: "black",
   },
   {
@@ -383,7 +383,7 @@ export const menu: Menu = [
     slug: "pizzas",
     title: "Cheesy Pizzas",
     desc: "Pizza Paradise: Irresistible slices, mouthwatering toppings, and cheesy perfection.",
-    img: "/temporary/m3.png",
+    img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80",
     color: "white",
   },
 ];

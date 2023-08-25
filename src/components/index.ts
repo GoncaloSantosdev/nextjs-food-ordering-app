@@ -8,4 +8,5 @@ export { default as FeaturedProducts } from "./FeaturedProducts";
 export { default as ProductCard } from "./ProductCard";
 export { default as Banner } from "./Banner";
 export { default as Timer } from "./Timer";
+export { default as Categories } from "./Categories";
 export { default as Footer } from "./Footer";
