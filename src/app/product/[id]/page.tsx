@@ -5,7 +5,7 @@ import { Banner, Options } from "@/components";
 
 const SingleProductPage = () => {
   return (
-    <main>
+    <>
       <section className="container mx-auto px-4 md:px-0 flex flex-col items-center mt-20 md:flex-row md:justify-around md:space-x-4">
         <div className="">
           <Image
@@ -25,7 +25,7 @@ const SingleProductPage = () => {
       </section>
 
       <Banner />
-    </main>
+    </>
   );
 };
 

@@ -5,7 +5,7 @@ import { pizzas } from "@/data";
 
 const CategoryPage = () => {
   return (
-    <main>
+    <>
       <section className="mt-20">
         <div className="container mx-auto px-4 md:px-0">
           <Title
@@ -25,7 +25,7 @@ const CategoryPage = () => {
       </section>
 
       <Banner />
-    </main>
+    </>
   );
 };
 

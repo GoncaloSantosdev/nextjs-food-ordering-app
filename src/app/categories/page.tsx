@@ -6,7 +6,7 @@ import { Banner } from "@/components";
 
 const CategoriesPage = () => {
   return (
-    <main>
+    <>
       <section className="mt-20">
         <div className="container mx-auto px-4 md:px-0 flex flex-col gap-4 md:flex-row">
           {categories.map((category) => (
@@ -37,7 +37,7 @@ const CategoriesPage = () => {
       </section>
 
       <Banner />
-    </main>
+    </>
   );
 };
 
