@@ -11,8 +11,8 @@ const menuData = [
     path: "/",
   },
   {
-    title: "Menu",
-    path: "/menu",
+    title: "Categories",
+    path: "/categories",
   },
   {
     title: "Contact",

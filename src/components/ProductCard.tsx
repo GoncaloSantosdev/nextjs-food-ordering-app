@@ -1,7 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-// Images
-import americanBurger from "../../public/american-burger.jpg";
 
 interface Product {
   id: number;
