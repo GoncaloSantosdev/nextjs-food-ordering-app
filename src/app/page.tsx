@@ -28,7 +28,7 @@ const features = [
 
 const HomePage = () => {
   return (
-    <>
+    <main>
       {/* Hero */}
       <section className="mt-20">
         <div className="container mx-auto px-4 md:px-0 flex flex-col lg:flex-row lg:items-center">
@@ -99,10 +99,7 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-
-      {/* Banner */}
-      <Banner />
-    </>
+    </main>
   );
 };
 

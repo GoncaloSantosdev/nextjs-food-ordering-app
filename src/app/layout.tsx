@@ -2,7 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 // Components
-import { Header, Notification, Footer } from "@/components";
+import { Header, Notification, Footer, Banner } from "@/components";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +21,8 @@ export default function RootLayout({
       <body className={inter.className} suppressHydrationWarning={true}>
         <Notification />
         <Header />
-        <main>{children}</main>
+        {children}
+        <Banner />
         <Footer />
       </body>
     </html>

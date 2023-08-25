@@ -5,4 +5,5 @@ export { default as Title } from "./Title";
 export { default as ProductCard } from "./ProductCard";
 export { default as Banner } from "./Banner";
 export { default as Timer } from "./Timer";
+export { default as Options } from "./Options";
 export { default as Footer } from "./Footer";

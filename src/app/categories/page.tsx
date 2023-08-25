@@ -1,13 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-// Components
-import { Banner } from "@/components";
 // Data
 import { categories } from "@/data";
 
 const CategoriesPage = () => {
   return (
-    <>
+    <main>
       <section className="mt-20">
         <div className="container mx-auto px-4 md:px-0 flex flex-col gap-4 md:flex-row">
           {categories.map((category) => (
@@ -21,7 +19,7 @@ const CategoriesPage = () => {
               />
 
               <div className="absolute text-white flex flex-col h-full w-full items-center justify-center text-center">
-                <h3 className="text-2xl font-bold">{category.title}</h3>
+                <h3 className="text-3xl font-bold lobster">{category.title}</h3>
                 <p className="my-6 px-4">{category.desc}</p>
                 <div>
                   <Link
@@ -36,10 +34,7 @@ const CategoriesPage = () => {
           ))}
         </div>
       </section>
-
-      {/* Banner */}
-      <Banner />
-    </>
+    </main>
   );
 };
 
