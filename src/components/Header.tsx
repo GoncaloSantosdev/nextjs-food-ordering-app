@@ -1,9 +1,12 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+// Auth
+import { signOut, useSession } from "next-auth/react";
 // React Icons
 import { HiOutlineMenuAlt3, HiOutlineShoppingCart } from "react-icons/hi";
 import { IoFastFoodOutline, IoCloseOutline } from "react-icons/io5";
+import Image from "next/image";
 
 const menuData = [
   {
@@ -21,7 +24,13 @@ const menuData = [
 ];
 
 const Header = () => {
+  const { data, status } = useSession();
   const [menu, setMenu] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
 
   const handleMenu = () => {
     setMenu((prev) => !prev);
@@ -62,9 +71,57 @@ const Header = () => {
           <Link href={"/cart"}>
             <HiOutlineShoppingCart size={20} />
           </Link>
-          <Link href={"/login"} className="btn-primary">
-            Login
-          </Link>
+          <div>
+            {status === "authenticated" ? (
+              <div>
+                <Image
+                  src={data?.user?.image}
+                  alt={data?.user?.name}
+                  onClick={toggleDropdown}
+                  width={35}
+                  height={35}
+                  className="rounded-full cursor-pointer"
+                />
+
+                {/* Dropdown menu */}
+                <div
+                  id="dropdown"
+                  className={`${
+                    isDropdownOpen ? "block absolute right-20 mt-4" : "hidden"
+                  } z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44`}
+                >
+                  <ul
+                    className="py-2 text-sm text-gray-700"
+                    aria-labelledby="dropdownDefaultButton"
+                  >
+                    <li>
+                      <Link
+                        href="/profile"
+                        className="block px-4 py-2 hover:bg-gray-100 border-b"
+                      >
+                        Profile
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/"
+                        onClick={() => {
+                          signOut();
+                        }}
+                        className="block px-4 py-2 hover:bg-gray-100"
+                      >
+                        Logout
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            ) : (
+              <Link href={"/login"} className="btn-primary">
+                Login
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </header>

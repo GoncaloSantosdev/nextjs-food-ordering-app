@@ -1,3 +1,4 @@
+export { default as AuthProvider } from "./AuthProvider";
 export { default as Notification } from "./Notification";
 export { default as Header } from "./Header";
 export { default as ImageSwiper } from "./ImageSwiper";
