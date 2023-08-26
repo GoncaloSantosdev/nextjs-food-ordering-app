@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-// Data
+// Components
 import { Banner } from "@/components";
-import { CategoriesType } from "@/types/types";
+// Types
+import { MenuType } from "@/types/types";
 
 const getData = async () => {
   const res = await fetch("http://localhost:3000/api/categories", {
@@ -17,7 +18,7 @@ const getData = async () => {
 };
 
 const CategoriesPage = async () => {
-  const data: CategoriesType = await getData();
+  const data: MenuType = await getData();
 
   return (
     <>

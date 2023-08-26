@@ -5,8 +5,8 @@ import { Banner, ImageSwiper, ProductCard, Title } from "@/components";
 import feature1 from "../../public/features-1.svg";
 import feature2 from "../../public/features-2.svg";
 import feature3 from "../../public/features-3.svg";
-// Data
-import { featuredProducts } from "@/data";
+// Types
+import { ProductType } from "@/types/types";
 
 const features = [
   {
@@ -26,7 +26,21 @@ const features = [
   },
 ];
 
-const HomePage = () => {
+const getData = async () => {
+  const res = await fetch("http://localhost:3000/api/products", {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+};
+
+const HomePage = async () => {
+  const data: ProductType[] = await getData();
+
   return (
     <>
       {/* Hero */}
@@ -91,7 +105,7 @@ const HomePage = () => {
             title={"Menu That Always Makes You Fall In Love"}
           />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-            {featuredProducts.map((item) => (
+            {data.map((item) => (
               <div key={item.id} className="">
                 <ProductCard item={item} />
               </div>
