@@ -1,15 +1,29 @@
 import Image from "next/image";
 import Link from "next/link";
 // Data
-import { categories } from "@/data";
 import { Banner } from "@/components";
+import { CategoriesType } from "@/types/types";
 
-const CategoriesPage = () => {
+const getData = async () => {
+  const res = await fetch("http://localhost:3000/api/categories", {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+};
+
+const CategoriesPage = async () => {
+  const data: CategoriesType = await getData();
+
   return (
     <>
       <section className="mt-20">
         <div className="container mx-auto px-4 md:px-0 flex flex-col gap-4 md:flex-row">
-          {categories.map((category) => (
+          {data.map((category) => (
             <div className="relative w-full h-[50vh]" key={category.id}>
               <Image
                 src={category.img}
