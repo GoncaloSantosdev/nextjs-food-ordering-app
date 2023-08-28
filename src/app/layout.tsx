@@ -8,6 +8,9 @@ import {
   AuthProvider,
   QueryProvider,
 } from "@/components";
+// toast
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const metadata: Metadata = {
   title: "Food Ordering App",
@@ -28,6 +31,11 @@ export default function RootLayout({
             <Header />
             <main>{children}</main>
             <Footer />
+            <ToastContainer
+              position="bottom-right"
+              theme="dark"
+              autoClose={3000}
+            />
           </QueryProvider>
         </AuthProvider>
       </body>
