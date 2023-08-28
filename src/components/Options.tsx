@@ -1,12 +1,16 @@
 "use client";
 
 import { ProductType } from "@/types/types";
+import { useCartStore } from "@/utils/store";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const Price = ({ product }: { product: ProductType }) => {
   const [total, setTotal] = useState(product.price);
   const [selected, setSelected] = useState(0);
   const [quantity, setQuantity] = useState(1);
+
+  const { addToCart } = useCartStore();
 
   useEffect(() => {
     if (product.options?.length) {
@@ -15,6 +19,21 @@ const Price = ({ product }: { product: ProductType }) => {
       );
     }
   }, [quantity, selected, product]);
+
+  const addToCartHandler = () => {
+    addToCart({
+      id: product.id,
+      title: product.title,
+      img: product.img,
+      price: total,
+      ...(product.options?.length && {
+        optionTitle: product.options[selected].title,
+      }),
+      quantity: quantity,
+    });
+
+    toast.success("Product added to cart");
+  };
 
   return (
     <>
@@ -36,15 +55,26 @@ const Price = ({ product }: { product: ProductType }) => {
             </button>
           ))}
       </div>
-      <div className="mt-8 space-x-4">
-        <input
-          type="number"
-          className="border text-black text-sm px-2 py-2 rounded"
-          placeholder="Quantity"
-          value={quantity}
-          min="1"
-        />
-        <button className="btn-primary">Add to cart</button>
+      <div className="mt-8 space-x-4 flex flex-col items-center sm:flex-row">
+        <div className="flex justify-between w-full sm:w-[50%] p-3 ring-1 ring-red-500 rounded">
+          <span>Quantity</span>
+          <div className="flex gap-4 items-center">
+            <button
+              onClick={() => setQuantity((prev) => (prev > 1 ? prev - 1 : 1))}
+            >
+              {"<"}
+            </button>
+            <span>{quantity}</span>
+            <button
+              onClick={() => setQuantity((prev) => (prev < 9 ? prev + 1 : 9))}
+            >
+              {">"}
+            </button>
+          </div>
+        </div>
+        <button className="btn-primary mt-6 sm:mt-0" onClick={addToCartHandler}>
+          Add to cart
+        </button>
       </div>
     </>
   );

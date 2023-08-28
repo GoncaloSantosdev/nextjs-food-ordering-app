@@ -70,11 +70,11 @@ const Header = () => {
           ))}
         </nav>
         {/* CTA */}
-        <div className="hidden md:flex md:items-center gap-4">
+        <div className="hidden md:flex md:items-center gap-6">
           <Link href={"/cart"}>
             <div className="flex justify-center items-center">
               <div className="relative">
-                <HiOutlineShoppingCart size={24} />
+                <HiOutlineShoppingCart size={20} />
                 <div className="absolute -top-3 left-3">
                   <p className="flex h-2 w-2 items-center justify-center rounded-full bg-red-500 p-3 text-xs text-white">
                     {totalItems}
