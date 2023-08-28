@@ -3,6 +3,8 @@ import { useState } from "react";
 import Link from "next/link";
 // Auth
 import { signOut, useSession } from "next-auth/react";
+// Zustand
+import { useCartStore } from "@/utils/store";
 // React Icons
 import { HiOutlineMenuAlt3, HiOutlineShoppingCart } from "react-icons/hi";
 import { IoFastFoodOutline, IoCloseOutline } from "react-icons/io5";
@@ -27,6 +29,7 @@ const Header = () => {
   const { data, status } = useSession();
   const [menu, setMenu] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const { totalItems } = useCartStore();
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -69,7 +72,16 @@ const Header = () => {
         {/* CTA */}
         <div className="hidden md:flex md:items-center gap-4">
           <Link href={"/cart"}>
-            <HiOutlineShoppingCart size={20} />
+            <div className="flex justify-center items-center">
+              <div className="relative">
+                <HiOutlineShoppingCart size={24} />
+                <div className="absolute -top-3 left-3">
+                  <p className="flex h-2 w-2 items-center justify-center rounded-full bg-red-500 p-3 text-xs text-white">
+                    {totalItems}
+                  </p>
+                </div>
+              </div>
+            </div>
           </Link>
           <div>
             {status === "authenticated" ? (
