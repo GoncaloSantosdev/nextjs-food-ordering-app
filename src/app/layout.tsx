@@ -1,7 +1,13 @@
 import "./globals.css";
 import type { Metadata } from "next";
 // Components
-import { Header, Notification, Footer, AuthProvider } from "@/components";
+import {
+  Header,
+  Notification,
+  Footer,
+  AuthProvider,
+  QueryProvider,
+} from "@/components";
 
 export const metadata: Metadata = {
   title: "Food Ordering App",
@@ -17,10 +23,12 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning={true}>
       <body suppressHydrationWarning={true}>
         <AuthProvider>
-          <Notification />
-          <Header />
-          <main>{children}</main>
-          <Footer />
+          <QueryProvider>
+            <Notification />
+            <Header />
+            <main>{children}</main>
+            <Footer />
+          </QueryProvider>
         </AuthProvider>
       </body>
     </html>

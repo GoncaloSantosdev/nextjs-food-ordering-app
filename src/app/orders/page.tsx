@@ -1,4 +1,29 @@
+"use client";
+import { useRouter } from "next/navigation";
+// Auth
+import { useSession } from "next-auth/react";
+// React Query
+import { useQuery } from "@tanstack/react-query";
+// TS Types
+import { OrderType } from "@/types/types";
+
 const OrdersPage = () => {
+  const { data: session, status } = useSession();
+
+  const router = useRouter();
+
+  if (status === "unauthenticated") {
+    router.push("/");
+  }
+
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["orders"],
+    queryFn: () =>
+      fetch("http://localhost:3000/api/orders").then((res) => res.json()),
+  });
+
+  if (isLoading || status === "loading") return "Loading...";
+
   return (
     <>
       <section className="mt-20">
@@ -25,101 +50,29 @@ const OrdersPage = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr className="bg-white border-b">
-                  <th
-                    scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-                  >
-                    Apple MacBook Pro 17"
-                  </th>
-                  <td className="px-6 py-4">Silver</td>
-                  <td className="px-6 py-4">Laptop</td>
-                  <td className="px-6 py-4">$2999</td>
-                  <td className="px-6 py-4">
-                    <a
-                      href="#"
-                      className="font-medium text-blue-600 hover:underline"
+                {data?.map((item: OrderType) => (
+                  <tr className="bg-white border-b" key={item.id}>
+                    <th
+                      scope="row"
+                      className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
                     >
-                      Edit
-                    </a>
-                  </td>
-                </tr>
-                <tr className="border-b bg-gray-50">
-                  <th
-                    scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-                  >
-                    Microsoft Surface Pro
-                  </th>
-                  <td className="px-6 py-4">White</td>
-                  <td className="px-6 py-4">Laptop PC</td>
-                  <td className="px-6 py-4">$1999</td>
-                  <td className="px-6 py-4">
-                    <a
-                      href="#"
-                      className="font-medium text-blue-600 hover:underline"
-                    >
-                      Edit
-                    </a>
-                  </td>
-                </tr>
-                <tr className="bg-white border-b">
-                  <th
-                    scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-                  >
-                    Magic Mouse 2
-                  </th>
-                  <td className="px-6 py-4">Black</td>
-                  <td className="px-6 py-4">Accessories</td>
-                  <td className="px-6 py-4">$99</td>
-                  <td className="px-6 py-4">
-                    <a
-                      href="#"
-                      className="font-medium text-blue-600 hover:underline"
-                    >
-                      Edit
-                    </a>
-                  </td>
-                </tr>
-                <tr className="border-b bg-gray-50">
-                  <th
-                    scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-                  >
-                    Google Pixel Phone
-                  </th>
-                  <td className="px-6 py-4">Gray</td>
-                  <td className="px-6 py-4">Phone</td>
-                  <td className="px-6 py-4">$799</td>
-                  <td className="px-6 py-4">
-                    <a
-                      href="#"
-                      className="font-medium text-blue-600 hover:underline"
-                    >
-                      Edit
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <th
-                    scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-                  >
-                    Apple Watch 5
-                  </th>
-                  <td className="px-6 py-4">Red</td>
-                  <td className="px-6 py-4">Wearables</td>
-                  <td className="px-6 py-4">$999</td>
-                  <td className="px-6 py-4">
-                    <a
-                      href="#"
-                      className="font-medium text-blue-600 hover:underline"
-                    >
-                      Edit
-                    </a>
-                  </td>
-                </tr>
+                      {item.id}
+                    </th>
+                    <td className="px-6 py-4">
+                      {item.createdAt.toString().slice(0, 10)}
+                    </td>
+                    <td className="px-6 py-4">{item.products[0].title}</td>
+                    <td className="px-6 py-4">${item?.price}</td>
+                    <td className="px-6 py-4">
+                      <a
+                        href="#"
+                        className="font-medium text-blue-600 hover:underline"
+                      >
+                        Edit
+                      </a>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
