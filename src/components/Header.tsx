@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 // Auth
 import { signOut, useSession } from "next-auth/react";
@@ -30,6 +30,10 @@ const Header = () => {
   const [menu, setMenu] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { totalItems } = useCartStore();
+
+  useEffect(() => {
+    useCartStore.persist.rehydrate();
+  }, []);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);

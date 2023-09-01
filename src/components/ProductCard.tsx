@@ -23,8 +23,10 @@ const ProductCard = ({ item }: { item: Product }) => {
       <div className="text-black flex flex-col text-center mt-4">
         <h3 className="text-2xl font-semibold lobster">{item.title}</h3>
         <p className="mt-2 text-xl font-bold">${item.price}</p>
-        <div className="mt-2">
-          <button className="btn-primary">Order now</button>
+        <div className="mt-4">
+          <Link href={`/product/${item.id}`} className="btn-primary">
+            View More
+          </Link>
         </div>
       </div>
     </div>

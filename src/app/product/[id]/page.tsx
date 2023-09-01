@@ -1,6 +1,6 @@
 import Image from "next/image";
 // Data
-import { Banner, Options } from "@/components";
+import { Banner, DeleteButton, Options } from "@/components";
 import { ProductType } from "@/types/types";
 
 const getData = async (id: string) => {
@@ -28,9 +28,11 @@ const SingleProductPage = async ({ params }: { params: { id: string } }) => {
           <h2 className="font-semibold text-3xl lobster">{data.title}</h2>
           <p className="mt-4 text-gray-800 leading-8">{data.desc}</p>
           <Options product={data} />
+          <div className="mt-4 flex justify-center md:justify-start">
+            <DeleteButton id={data.id} />
+          </div>
         </div>
       </section>
-
       <Banner />
     </>
   );
